@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <title>Search</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <template>
+  <div>
+  <v-card id="Pro" class="mx-auto" hover>
+    <form method='POST' action='.'>
+      <input type="text" name="url" placeholder="Enter Url"><v-btn color="red accent-4" id="ProB">Process</v-btn>
+    </form>
+  </v-card>
+  <div id="Result" class="mx-auto">
+  <v-data-table
+    :headers="headers"
+    :items="words"
+    hide-actions
+    class="elevation-1"
+  >
+    <template slot="headerCell" slot-scope="props">
+      <v-tooltip bottom>
+        <span slot="activator">
+          {{ props.header.text }}
+        </span>
+        <span>
+          {{ props.header.text }}
+        </span>
+      </v-tooltip>
+    </template>
+    <template slot="items" slot-scope="props">
+      <td>{{ props.item.name }}</td>
+      <td class="text-xs-right">{{ props.item.repeat }}</td>
+    </template>
+  </v-data-table>
+  </div>
+  </div>
+    </template>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+  <script>
+    new Vue({ 
+      el: '#app' ,
+      data:{
+      Process:'',
+       headers: [
+          {
+            text: 'word',
+            align: 'left',
+            sortable: false,
+            value: 'name'
+          },
+          { text: 'repeat', value: 'repeat' }
+        ],
+        words: [
+          {
+            value: false,
+            name: 'yes',
+            repeat:93
+          },
+           {
+            value: false,
+            name: 'support',
+            repeat:56
+          }]
+    }
+})
+  </script>
+</body>
+</html>

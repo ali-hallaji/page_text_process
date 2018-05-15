@@ -1,0 +1,17 @@
+backports-abc==0.5
+BeautifulSoup==3.2.1
+beautifulsoup4==4.6.0
+bs4==0.0.1
+certifi==2018.4.16
+chardet==3.0.4
+futures==3.2.0
+idna==2.6
+MySQL-python==1.2.5
+nltk==3.3
+peewee==3.3.4
+requests==2.18.4
+singledispatch==3.4.0.3
+six==1.11.0
+textblob==0.15.1
+tornado==5.0.2
+urllib3==1.22
