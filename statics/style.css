@@ -1,0 +1,106 @@
+body
+{
+	background: url(/static/background.jpg) no-repeat;
+	background-size: cover;
+	font-family: Georgia;
+}
+button 
+{
+    position: absolute;
+    right: 25.3%;
+    top: 3px;
+}
+
+button:hover 
+{
+    background-color: #b8bcc8;
+    transition: background-color 0.5s; 
+}
+#Result
+{
+    font-size: 20px;
+    border-radius: 5px;
+    width: 95%;
+    margin: 20px auto;
+}
+input[type=text] 
+{
+    margin: 3px auto;
+    width: 50%;
+    padding: 11px;
+}
+#table{
+    opacity: 0.75;
+    padding: 4px;
+    text-align: center;
+    background-color: white;
+    width: 50%;
+    border-radius: 2px;
+    transition: box-shadow 0.5s;
+    border-radius: 5px;
+    transition: opacity 0.5s;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    float: none;
+}
+#table:hover
+{
+    opacity: 1;
+    box-shadow: 3px 3px 5px;
+    transition: box-shadow 0.5s;
+    transition: opacity 0.5s;
+}
+#s
+{
+    opacity: 0.5;
+    width: 100%;
+    margin: 120px auto 25px;
+    position: relative;
+}
+#help
+{
+	opacity: 0.6;
+	text-align: left;
+	padding-left: 7px;
+	width: 10%;
+	position: relative;
+	background-color : white;
+	transition: box-shadow 0.5s;
+	transition: opacity 0.5s;
+	border-radius: 5px;
+	margin: -30% 10% 0% 5%;
+}
+#help:hover
+{
+	opacity: 1;
+	box-shadow: 3px 3px 5px;
+	transition: box-shadow 0.5s;
+	transition: opacity 0.5s;
+}
+#bbox
+{
+	border-radius:3px;
+	padding:2px;
+    width: 50px;
+    color:white;
+    background-color: #5891f2;
+}
+#rbox
+{
+	border-radius:3px;
+	padding:2px;
+    width:50px;
+    color:white;
+    background-color: #524646;
+}
+span
+{
+    position: relative;
+    bottom:2.5px;
+}
+i
+{
+    position: relative;
+    right:4px;
+}

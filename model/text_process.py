@@ -14,7 +14,7 @@ cursor = MySQLDatabase(
 
 
 class TextProcess(Model):
-    word = CharField()
+    word = CharField(primary_key=True, unique=True)
     asyc_word = CharField()
     qty = IntegerField()
 
@@ -24,3 +24,4 @@ class TextProcess(Model):
 
 cursor.connect()
 cursor.create_tables([TextProcess])
+

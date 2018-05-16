@@ -7,9 +7,13 @@ chardet==3.0.4
 futures==3.2.0
 idna==2.6
 MySQL-python==1.2.5
+Naked==0.1.31
 nltk==3.3
 peewee==3.3.4
+pycrypto==2.6.1
+PyYAML==3.12
 requests==2.18.4
+shellescape==3.4.1
 singledispatch==3.4.0.3
 six==1.11.0
 textblob==0.15.1

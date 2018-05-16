@@ -1,76 +1,56 @@
 <!doctype html>
 <html>
 <head>
-  <title>Search</title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-  <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+    <title>Process Web Page</title>
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 </head>
-<body>
-  <div id="app">
-    <template>
-  <div>
-  <v-card id="Pro" class="mx-auto" hover>
-    <form method='POST' action='.'>
-      <input type="text" name="url" placeholder="Enter Url"><v-btn color="red accent-4" id="ProB">Process</v-btn>
-    </form>
-  </v-card>
-  <div id="Result" class="mx-auto">
-  <v-data-table
-    :headers="headers"
-    :items="words"
-    hide-actions
-    class="elevation-1"
-  >
-    <template slot="headerCell" slot-scope="props">
-      <v-tooltip bottom>
-        <span slot="activator">
-          {{ props.header.text }}
-        </span>
-        <span>
-          {{ props.header.text }}
-        </span>
-      </v-tooltip>
-    </template>
-    <template slot="items" slot-scope="props">
-      <td>{{ props.item.name }}</td>
-      <td class="text-xs-right">{{ props.item.repeat }}</td>
-    </template>
-  </v-data-table>
-  </div>
-  </div>
-    </template>
-  </div>
+<body background="/static/background.jpg" style="font-family: Georgia;">
+        <div id="s">
+            <form method="POST" action=".">
+                <input type="text" class="form-control" name="url" placeholder="Enter Url">
+                <button type="submit" class="btn" id="ProB"><i class="fa fa-search" style="font-size:24px"></i><span>Process</span></button>
+            </form>
+        </div>
+        {% if words %}
+            <div id="Result">
+                <div id="table">
+                    <table id="example" class="display table">
+                        <thead>
+                            <tr>
+                                <th>Word</th>
+                                <th>Frequency</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in words %}
 
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
-  <script>
-    new Vue({ 
-      el: '#app' ,
-      data:{
-      Process:'',
-       headers: [
-          {
-            text: 'word',
-            align: 'left',
-            sortable: false,
-            value: 'name'
-          },
-          { text: 'repeat', value: 'repeat' }
-        ],
-        words: [
-          {
-            value: false,
-            name: 'yes',
-            repeat:93
-          },
-           {
-            value: false,
-            name: 'support',
-            repeat:56
-          }]
-    }
-})
-  </script>
+                                <tr style="color:{% if data[0] == 'Noun' %}#524646;{% else %}#5891f2;{% end %}">
+                                    <td><font size="{{ data[2] * 0.3 }}">{{ data[1] }}</font></td>
+                                    <td><font size="{{ data[2] * 0.3 }}">{{ data[2] }}</font></td>
+                                    <td><font size="{{ data[2] * 0.3 }}">{{ data[0] }}</font></td>
+                                </tr>
+                            {% end %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="help">
+                <h3>Hint!</h3>
+                <p id="rbox">Noun</p><p id="bbox">Verb</p>
+            </div>
+        {% end %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                "order": [[ 1, "desc" ]]
+            });
+        } );
+    </script>
 </body>
 </html>
