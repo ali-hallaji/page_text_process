@@ -22,6 +22,15 @@ class TextProcess(Model):
         database = cursor
 
 
-cursor.connect()
-cursor.create_tables([TextProcess])
+class SentimentAnalysis(Model):
+    salt_url = CharField(unique=True)
+    url = CharField(unique=True)
+    situation = CharField()
 
+    class Meta:
+        database = cursor
+        primary_key = CompositeKey('salt_url', 'url')
+
+
+cursor.connect()
+cursor.create_tables([TextProcess, SentimentAnalysis])

@@ -10,11 +10,11 @@
 <body background="/static/background.jpg" style="font-family: Georgia;">
         <div id="s">
             <form method="POST" action=".">
-                <input type="text" class="form-control" name="url" placeholder="Enter Url">
+                <input type="text" class="form-control input-lg" name="url" placeholder="{% if data.get('error', None) %}{{ data['error']['msg'] }}{% else %}Enter a valid URL{% end %}">
                 <button type="submit" class="btn" id="ProB"><i class="fa fa-search" style="font-size:24px"></i><span>Process</span></button>
             </form>
         </div>
-        {% if words %}
+        {% if data.get('words', []) %}
             <div id="Result">
                 <div id="table">
                     <table id="example" class="display table">
@@ -26,12 +26,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for data in words %}
-
-                                <tr style="color:{% if data[0] == 'Noun' %}#524646;{% else %}#5891f2;{% end %}">
-                                    <td><font size="{{ data[2] * 0.3 }}">{{ data[1] }}</font></td>
-                                    <td><font size="{{ data[2] * 0.3 }}">{{ data[2] }}</font></td>
-                                    <td><font size="{{ data[2] * 0.3 }}">{{ data[0] }}</font></td>
+                            {% for item in data['words'] %}
+                                <tr style="color:{% if item[0] == 'Noun' %}#524646;{% else %}#5891f2;{% end %}">
+                                    <td><font size="{{ item[2] * 0.3 }}">{{ item[1] }}</font></td>
+                                    <td><font size="{{ item[2] * 0.3 }}">{{ item[2] }}</font></td>
+                                    <td><font size="{{ item[2] * 0.3 }}">{{ item[0] }}</font></td>
                                 </tr>
                             {% end %}
                         </tbody>
@@ -39,6 +38,11 @@
                 </div>
             </div>
             <div id="help">
+                {% if data['result_url'] == 'Positive' %}
+                    Result of URL: <div id="stat-g"><p>Positive</p></div>
+                {% else %}
+                    Result of URL: <div id="stat-r"><p>Negative</p></div>
+                {% end %}
                 <h3>Hint!</h3>
                 <p id="rbox">Noun</p><p id="bbox">Verb</p>
             </div>
@@ -50,7 +54,7 @@
             $('#example').DataTable({
                 "order": [[ 1, "desc" ]]
             });
-        } );
+        });
     </script>
 </body>
 </html>

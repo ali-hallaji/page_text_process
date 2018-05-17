@@ -10,12 +10,16 @@ MySQL-python==1.2.5
 Naked==0.1.31
 nltk==3.3
 peewee==3.3.4
+prompt-toolkit==1.0.15
 pycrypto==2.6.1
 PyYAML==3.12
 requests==2.18.4
 shellescape==3.4.1
+simplejson==3.15.0
 singledispatch==3.4.0.3
 six==1.11.0
 textblob==0.15.1
 tornado==5.0.2
 urllib3==1.22
+wcwidth==0.1.7
+wit==5.1.0

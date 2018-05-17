@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/img/apple-icon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <link href="/static/css/demo.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-image="/static/sidebar-2.jpg">
+            <div class="sidebar-wrapper">
+                <div class="logo">
+                    <a href="#" class="simple-text">
+                        Octopus
+                    </a>
+                </div>
+                <ul class="nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/dashboard/words">
+                            <i class="nc-icon nc-chart-pie-35"></i>
+                            <p>Show Words</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="/dashboard/urls">
+                            <i class="nc-icon nc-circle-09"></i>
+                            <p>Show URLs</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        <div class="sidebar-background" style="background-image: url(/static/img/sidebar-2.jpg) "></div><div class="sidebar-background" style="background-image: url(/static/img/sidebar-2.jpg) "></div></div>
+        <div class="main-panel">
+            <nav class="navbar navbar-expand-lg " color-on-scroll="500">
+                <div class=" container-fluid  ">
+                    <a class="navbar-brand" href="#"> Dashboard </a>
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                        <span class="navbar-toggler-bar burger-lines"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                    </div>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="example" style="width:100%; text-align: center;" class="display table" style="width:100%">
+                                {% if data['mode'] == 'words' %}
+                                    <thead>
+                                        <tr>
+                                            <th>Frequency</th>
+                                            <th>Word</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in data['words'] %}
+                                            <tr style="color:{% if item[0] == 'Noun' %}#524646;{% else %}#5891f2;{% end %}">
+                                                <td><font size="{{ item[2] * 0.3 }}">{{ item[2] }}</font></td>
+                                                <td><font size="{{ item[2] * 0.3 }}">{{ item[1] }}</font></td>
+                                                <td><font size="{{ item[2] * 0.3 }}">{{ item[0] }}</font></td>
+                                            </tr>
+                                        {% end %}
+                                    </tbody>
+                                {% elif data['mode'] == 'urls' %}
+                                    <thead>
+                                        <tr>
+                                            <th>URL</th>
+                                            <th>Situation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in data['urls'] %}
+                                            <tr>
+                                               <td><a href="{{ item['url'] }}">{{ item['url'][:150] }}</a></td> 
+                                               <td><font color="{% if item['situation'] == 'Positive' %}green{% else %}red{% end %}">{{ item['situation'] }}</font></td>
+                                            </tr>
+                                        {% end %}
+                                    </tbody>
+                                {% end %}
+                            </table>
+                            {% if not data['mode'] %}
+                                Please Choose <a href="/dashboard/words">Words</a> or <a href="/dashboard/urls">URLs</a>.
+                            {% end %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <footer class="footer">
+            </footer>
+        </div>
+    </div>
+<script src="/static/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="/static/js/core/popper.min.js" type="text/javascript"></script>
+<script src="/static/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="/static/js/plugins/bootstrap-switch.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<script src="/static/js/plugins/chartist.min.js"></script>
+<script src="/static/js/plugins/bootstrap-notify.js"></script>
+<script src="/static/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+<script src="/static/js/demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        demo.initDashboardPageCharts();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "order": [[ 0, "desc" ]]
+        });
+    } );
+</script>
+</body>
+</html>

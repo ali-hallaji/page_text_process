@@ -1,19 +1,29 @@
-
-version: '2'
+version: '3.3'
 services:
   web:
     build: .
+    restart: always
     ports:
         - "8888:8888"
     links:
       - db:mysql
-    container_name: counterapp_web_1
+    container_name: ai_web
     depends_on:
       - db
   db:
-    image: mysql/mysql-server:5.7
+    image: mysql:5.7.22
+    command:
+      - --default_authentication_plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
     restart: always
-    container_name: counterapp_db_1
+    container_name: ai_db
     environment:
-      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_USER: "ali"
+      MYSQL_DATABASE: text_process
+      MYSQL_PASSWORD: "aliali"
+      MYSQL_ROOT_PASSWORD: "aliali"
       MYSQL_ROOT_HOST: "%"
+
+volumes:
+    db_data:

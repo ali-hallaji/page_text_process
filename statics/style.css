@@ -68,16 +68,18 @@ input[type=text]
 	background-color : white;
 	transition: box-shadow 0.5s;
 	transition: opacity 0.5s;
-	border-radius: 5px;
+	border-radius: 0%;
 	margin: -30% 10% 0% 5%;
 }
+
 #help:hover
 {
-	opacity: 1;
-	box-shadow: 3px 3px 5px;
-	transition: box-shadow 0.5s;
-	transition: opacity 0.5s;
+    opacity: 1;
+    box-shadow: 3px 3px 5px;
+    transition: box-shadow 0.5s;
+    transition: opacity 0.5s;
 }
+
 #bbox
 {
 	border-radius:3px;
@@ -103,4 +105,38 @@ i
 {
     position: relative;
     right:4px;
+}
+#stat-r
+{
+    opacity: 0.6;
+    text-align: left;
+    padding-left: 7px;
+    position:relative;
+    background-color : red;
+    transition: box-shadow 0.5s;
+    transition: opacity 0.5s;
+    border-radius: 5px;
+    right:3px;
+    width:90px;
+}
+#stat-g
+{
+    opacity: 0.6;
+    text-align: left;
+    padding-left: 7px;
+    position:relative;
+    background-color : green;
+    transition: box-shadow 0.5s;
+    transition: opacity 0.5s;
+    border-radius: 5px;
+    right:3px;
+    width:90px;
+}
+#stat:hover
+{
+    background-color: white;
+    opacity: 1;
+    box-shadow: 3px 3px 5px;
+    transition: box-shadow 0.5s;
+    transition: opacity 0.5s;
 }
