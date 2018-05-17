@@ -27,11 +27,18 @@ Also you can change somethings. such as:
 * `wit token`
 * `etc ...`
 
-# Screen shot of project
+# Screenshot of project
+### URL Process Page(search):
 ![URL Process Page(search)](https://raw.githubusercontent.com/ali-hallaji/page_text_process/master/screen/search_url.png)
 
+
+### After Process(search)
 ![After Process(search)](https://raw.githubusercontent.com/ali-hallaji/page_text_process/master/screen/after_process.png)
 
+
+### Admin Words(admin)
 ![Admin Words(admin)](https://raw.githubusercontent.com/ali-hallaji/page_text_process/master/screen/admin_words.png)
 
+
+### Admin URLs(admin)
 ![Admin URLs(admin)](https://raw.githubusercontent.com/ali-hallaji/page_text_process/master/screen/admin_urls.png)
