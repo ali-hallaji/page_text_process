@@ -12,7 +12,7 @@ nltk==3.3
 peewee==3.3.4
 prompt-toolkit==1.0.15
 pycrypto==2.6.1
-PyYAML==3.12
+PyYAML==5.4
 requests==2.18.4
 shellescape==3.4.1
 simplejson==3.15.0
